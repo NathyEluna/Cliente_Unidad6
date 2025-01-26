@@ -7,7 +7,7 @@ const Cabecera = () => {
   const { sesionIniciada, usuario } = useContext(sesionContexto);
   return (
     <header className="cabecera">
-      <h1 className="titulo">Práctica 6.01</h1>
+      <h1 className="titulo">Práctica 6.02</h1>
       <Navegador />
       { sesionIniciada && `Hola, ${usuario.email}` }
     </header>
