@@ -1,0 +1,25 @@
+.nav{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.menu-link{
+    background-color: #c00;
+    border: 5px ridge rgb(71, 71, 71);
+    padding: 10px;
+    color: rgb(255, 255, 0);
+    border-radius: 10px;
+}
+
+.menu-link:hover{
+    background-color: #f00;
+    color: rgb(255, 255, 0);
+    box-shadow: 0 0 8px 1px black inset;
+}
+
+.cerrar-sesion{
+    margin-right: 10px;
+}
