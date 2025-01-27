@@ -10,14 +10,12 @@ const ProveedorSesion = ({ children }) => {
     //Valores iniciales de los estados.
     const defaultDatosSesion = { email : "", password : "" ,};
     const defaultUsuario = {};
-    const defaultErrorUsuario = "";
-    const defaultSesionIniciada = false;
 
     //Estados.
     const [datosSesion, setDatosSesion] = useState(defaultDatosSesion);
     const [usuario, setUsuario] = useState(defaultUsuario);
-    const [errorUsuario, setErrorUsuario] = useState(defaultErrorUsuario);
-    const [sesionIniciada, setSesionIniciada] = useState(defaultSesionIniciada);
+    const [errorUsuario, setErrorUsuario] = useState("");
+    const [sesionIniciada, setSesionIniciada] = useState(false);
 
     //Función para crear un nuevo usuario.
     const crearUsuario = async () => {
@@ -63,6 +61,11 @@ const ProveedorSesion = ({ children }) => {
             await supabase.auth.signOut();
             //Navegar a la página de inicio de sesión(parte pública).
             navegar("/login");
+
+            if(error){
+                throw error;
+            };
+
         }catch(error){
             setErrorUsuario(error.message);
         };
@@ -77,7 +80,6 @@ const ProveedorSesion = ({ children }) => {
                 throw error;
             };
             setUsuario(data.user);
-            console.log(data.user);
 
         }catch(error){
             setErrorUsuario(error.message);
