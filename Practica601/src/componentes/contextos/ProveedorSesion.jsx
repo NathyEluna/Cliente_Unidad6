@@ -121,8 +121,9 @@ const ProveedorSesion = ({ children }) => {
             const { data, error} = await supabase.auth.updateUser({
                 password: datosSesion.password,
             });
+            //Antes de poner esa función no funcionaba el cambio de contraseña. No se si debería ir aqui o antes pero no quiero tocarlo. xD
             obtenerUsuarioActual();
-            console.log("Datos de sesión:", datosSesion, "Datos usuario" , usuario);
+            //Navegar a la página de inicio.
             navegar("/");
 
             if(error){
