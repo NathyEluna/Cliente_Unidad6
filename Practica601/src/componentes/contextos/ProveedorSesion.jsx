@@ -173,6 +173,7 @@ const ProveedorSesion = ({ children }) => {
         restablecerPassword,
         obtenerUsuarioActual,
         cambiarPassword,
+        limpiarError,
     };
 
   return (

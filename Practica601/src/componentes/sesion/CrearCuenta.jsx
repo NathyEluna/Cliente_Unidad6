@@ -1,9 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { sesionContexto } from '../contextos/ProveedorSesion.jsx';
 import Errores from '../Errores.jsx';
 
 const CrearCuenta = () => {
-    const { actualizarDatos, crearUsuario, errorUsuario } = useContext(sesionContexto);
+    const { actualizarDatos, crearUsuario, errorUsuario, limpiarError } = useContext(sesionContexto);
+
+    useEffect(() => {
+      limpiarError();
+    }, []);
     return (
     <div className="contenedor-login">
       <div className="contenedor-sesion">

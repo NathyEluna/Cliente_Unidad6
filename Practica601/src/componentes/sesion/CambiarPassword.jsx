@@ -1,10 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { sesionContexto } from '../contextos/ProveedorSesion.jsx';
 import Errores from '../Errores.jsx';
 import "../../css/login.css";
 
 const CambiarPassword = () => {
-    const { actualizarDatos, cambiarPassword, errorUsuario } = useContext(sesionContexto);
+    const { actualizarDatos, cambiarPassword, errorUsuario, limpiarError } = useContext(sesionContexto);
+
+    useEffect(() => {
+      limpiarError();
+    }, []);
   return (
     <div className='contenedor-login'>
         <div className='contenedor-sesion'>
