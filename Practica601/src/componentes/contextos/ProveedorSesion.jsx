@@ -1,11 +1,14 @@
 import { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { supabase } from '../../config/supabase.js';
 
 const sesionContexto = createContext();
 
 const ProveedorSesion = ({ children }) => {
     const navegar = useNavigate();
+    //hook para conseguir la ruta en que estamos localizados.
+    const location = useLocation();
 
     //Valores iniciales de los estados.
     const defaultDatosSesion = { email : "", password : "" ,};
@@ -74,6 +77,7 @@ const ProveedorSesion = ({ children }) => {
     //Función para obtener el usuario actual.
     const obtenerUsuarioActual = async () => {
         try{
+            setErrorUsuario("");
             const { data, error} = await supabase.auth.getUser();
             
             if(error){
@@ -92,10 +96,13 @@ const ProveedorSesion = ({ children }) => {
         setDatosSesion({...datosSesion, [name]: value});
     };
 
-    //Función para restablecer la contraseña.
+    //Función para restablecer la contraseña. Primero el usuario pide para restablecer la contraseña, entonces el enlace
+    //enviado por correo redirecciona el usuario a la página de cambiar contraseña y hace login automaticamente.
     const restablecerPassword = async () => {
         try{
-            const { data, error } = await supabase.auth.api.resetPasswordForEmail(datosSesion.email);
+            const { data, error } = await supabase.auth.resetPasswordForEmail(datosSesion.email, {
+                redirectTo:"http://localhost:5173/cambiar-password"
+            });
 
             if(error){
                 throw error;
@@ -108,12 +115,40 @@ const ProveedorSesion = ({ children }) => {
         };
     };
 
+    //Función para cambiar la contraseña del usuario.
+    const cambiarPassword = async () => {
+        try{
+            const { data, error} = await supabase.auth.updateUser({
+                password: datosSesion.password,
+            });
+            obtenerUsuarioActual();
+            console.log("Datos de sesión:", datosSesion, "Datos usuario" , usuario);
+            navegar("/");
+
+            if(error){
+                throw error;
+            };
+
+        }catch(error){
+            setErrorUsuario(error.message);
+        };
+    };
+
+    const limpiarError = () => {
+        setErrorUsuario("");
+    };
 
     useEffect(() => {
+        limpiarError();
         //Función que estará siempre activa y verifica si la sesión se inicia o se cierra.
-        const suscrito = supabase.auth.onAuthStateChange((event, session) => {
+        const suscrito = supabase.auth.onAuthStateChange((e, session) => {
             if(session){
-                navegar("/");
+                //Verifica si estamos en la ruta de cambiar contraseña, si no estamos redirige el usuario
+                //a la página de inicio. Sí el usuario está con la sesión iniciada por el enlace de restablecer
+                //contraseña, deja el usuario en cambiar-password y no en inicio.
+                if(location.pathname !== "/cambiar-password"){
+                    navegar("/");
+                };
                 setSesionIniciada(true);
                 obtenerUsuarioActual();
                 setErrorUsuario("");
@@ -137,6 +172,7 @@ const ProveedorSesion = ({ children }) => {
         actualizarDatos,
         restablecerPassword,
         obtenerUsuarioActual,
+        cambiarPassword,
     };
 
   return (

@@ -12,7 +12,7 @@ const CrearCuenta = () => {
         <input type="email" name="email" id="email-2" placeholder="Correo Electrónico" onChange={(e) => actualizarDatos(e)} />
         
         <label htmlFor="password">Contraseña:</label>
-        <input type="password" name="password" id="pass-2" placeholder="Contraseña" onChange={(e) => actualizarDatos(e)} />
+        <input type="password" name="password" id="pass-2" placeholder="********" onChange={(e) => actualizarDatos(e)} />
 
         <button className="crear-btn" onClick={crearUsuario}>Crear Cuenta</button>
         {errorUsuario && <Errores>{errorUsuario}</Errores>}
