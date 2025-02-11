@@ -1,0 +1,301 @@
+.contenedor-listas{
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    min-height: 100vh;
+    padding: 15px 45px;
+    background-image: url(https://wow.zamimg.com/uploads/screenshots/normal/875709-wc3loadingscreens.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.sort-nav{
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+/*CONTENEDOR DEL LISTADO DE CARDS DE PRODUCTOS*/
+.contenedorListas{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: transparent;
+}
+
+
+
+/*CONTENEDOR GENERAL DEL APARTADO PRODUCTOS*/
+.listas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Friz Quadrata Regular";
+    color: rgb(42, 25, 6);
+    background-color: transparent;
+}
+
+.listas h2{
+    align-self: center;
+}
+
+.listas ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+.listas ul li{
+    list-style: none;
+
+}
+
+.listas ul li a{
+    text-decoration: none;
+    color: rgb(207, 184, 10);
+    font-size: 1em;
+    margin-right: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 5px ridge rgb(71, 71, 71);
+}
+
+.listas ul li a:hover{
+    background-color: #000000d9;
+    color: rgb(255, 255, 0);
+    border-radius: 5px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+/*CONTENEDOR FORMULARIOS PRODUCTOS*/
+.contenedor-formulario{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedor-formulario .insert-btn, .contenedor-formulario .edit-btn{
+    margin: 0 0 30px 0;
+    align-self: center;
+    justify-self: center;
+}
+
+/*TITULOS*/
+.contenedor-listas h2{
+    justify-self: center;
+    width: max-content;
+    font-family: "MORPHEUS";
+    text-align: center;
+    font-size: 2.5em;
+    color: rgb(207, 184, 10);
+    margin: 10px 0;
+    padding: 0 10px 5px 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(132, 118, 6);
+    border-radius: 5px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+.contenedor-listas h3{
+    justify-self: center;
+    width: max-content;
+    font-family: "MORPHEUS";
+    text-align: center;
+    font-size: 2em;
+    color: rgb(207, 184, 10);
+    margin: 10px 0;
+    padding: 0 10px 5px 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(132, 118, 6);
+    border-radius: 5px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+/*INPUTS*/
+.contenedor-listas input, textarea, select{
+    width: 170px;
+    padding: 10px;
+    margin: 10px 5px 20px 5px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
+    box-shadow: 0 0 8px 1px black;
+}
+
+select{  
+    width: 160px;
+}
+
+.agregar-a-lista{
+    margin-top: 15px;
+}
+
+/*BOTONES*/
+.sort-btn, .filter-btn{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #c00;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    color: rgb(255, 255, 0);   
+    font-size: 15px;
+    box-shadow: 0 0 8px 1px black;
+}
+
+.list-btn{
+    padding: 10px;
+    background-color: #c00;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    color: rgb(255, 255, 0);   
+    font-size: 0.8em;
+    box-shadow: 0 0 8px 1px black;
+}
+
+.list-btn a{
+    text-decoration: none;
+    color: rgb(255, 255, 0);
+}
+
+.sort-btn:hover, .filter-btn:hover, .sub-btn:hover{
+    background-color: #f00;
+    color: rgb(255, 255, 0);
+    box-shadow: 0 0 8px 1px black inset;
+    transition: 0.3s;
+}
+
+/*CARDS CADA PRODUCTO*/
+.card-lista{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    margin:  20px auto;
+    padding: 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    color: white;
+    font-size: 0.8em;
+    box-shadow: 0 0 8px 1px black;
+}
+
+.card-lista h2{
+    align-self: center;
+    justify-self: center;
+    margin: 10px 0;
+    font-size: 2em;
+    text-align: center;
+}
+
+.card-lista p{
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.card-botones{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.card-btn{
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #c00;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    color: rgb(255, 255, 0);   
+    font-size: 15px;
+}
+
+/*RESULTADOS CALCULOS*/
+.resumen{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0 50px 0;
+    padding: 10px;
+    background-color: #000000d9;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 10px;
+    color: white;
+    font-size: 0.8em;
+    box-shadow: 0 0 8px 1px black;
+}
+
+@media (max-width: 1280px){
+    .listas{
+        width: 1080px;
+    }
+}
+
+@media (max-width: 1080px){
+    .listas{
+        width: 960px;
+    }
+}
+
+@media (max-width: 960px){
+    .listas{
+        width: 720px;
+    }
+    .contenedorListas{
+        width: 100%;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 720px){
+    .productos{
+        width: 540px;
+    }
+    .contenedorListas{
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 540px){
+    .listas{
+        width: 360px;
+    }
+    .contenedorListas{
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 360px){
+    .listas{
+        width: 300px;
+    }
+    .contenedorListas{
+        width: 100%;
+    }
+}

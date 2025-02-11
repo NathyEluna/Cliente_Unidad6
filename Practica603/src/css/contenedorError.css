@@ -1,0 +1,59 @@
+.contenedorError{
+    width: 100%;
+    height: 100%;
+    min-width: 300px;
+    min-height: 100vh;
+    padding: 15px 0;
+    background-image: url(https://wow.zamimg.com/uploads/screenshots/normal/875709-wc3loadingscreens.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.error{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 1280px;
+        margin: 0 auto;
+        text-align: center;
+        font-family: "Friz Quadrata Regular";
+        
+}
+
+
+.contenedorError h1{
+    width: max-content;
+    font-family: "MORPHEUS";
+    font-size: 3em;
+    font-weight: 700;
+    color: rgb(255, 255, 0);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 10px 5px;
+    border: 5px ridge rgb(71, 71, 71);
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.616);
+}
+
+.contenedorError h2{
+    font-family: serif;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    color: rgb(53, 37, 17);
+    margin-bottom: 10px;
+}
+
+.contenedorError section{
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: "Friz Quadrata Regular";
+    font-size: 1.2em;
+    color: rgb(42, 25, 6);
+}
+
+.contenedorError section p{
+    margin: 0 0 25px 0;
+}
