@@ -25,7 +25,6 @@ const ProveedorProducto = ({ children }) => {
     const [filtros, setFiltros] = useState(defaultFiltro);
     const [productoElegido, setProductoElegido] = useState(defaultProducto);
     const [nuevoProducto, setNuevoProducto] = useState(defaultProducto);
-    const [listadoInsertados, setListadoInsertados] = useState([]);
     const [errorProducto, setErrorProducto] = useState("");
     const [productoEditado, setProductoEditado] = useState(defaultProducto);
 
@@ -73,7 +72,7 @@ const ProveedorProducto = ({ children }) => {
         } else {
             //Si estamos ordenando el listado completo.
             setListadoProducto(sorted);
-        }
+        };
     };
 
     //Función para filtras los productos con el filtro elegido.
@@ -194,7 +193,7 @@ const ProveedorProducto = ({ children }) => {
         if (producto) {
             setProductoElegido(producto);
             setProductoEditado(producto); // Asegúrese de que productoEditado se actualice aquí
-        }
+        };
     };
 
     //Función para eliminar productos(Delete).
@@ -230,16 +229,13 @@ const ProveedorProducto = ({ children }) => {
     }, []);
 
     const datosExportarProductos = {
-        //Estados.
         listadoProducto,
         listadoFiltrado,
-        listadoInsertados,
         productoElegido,
         filtros,
         errorProducto,
         nuevoProducto,
         productoEditado,
-        //Funciones.
         filterProductos, actualizarFiltro, seleccionarProducto,
         borrarFiltros, sortProductos,
         actualizarDatoElegido, insertProducto, updateProducto,

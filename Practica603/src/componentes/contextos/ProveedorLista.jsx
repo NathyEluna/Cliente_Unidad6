@@ -13,11 +13,13 @@ const ProveedorLista = ({ children }) => {
     const [listas, setListas] = useState([]);
     const [productosLista, setProductosLista] = useState([]);
     const [errorLista, setErrorLista] = useState("");
-    const pesoCompras = 20; // Umbral de peso para usar el coche
+    //Peso para usar el coche para la compra.
+    const pesoCompras = 20; 
 
     //Funciones para interactuar con la base de datos.
     const selectListas = async () => {
-        if (!usuario || !usuario.id) return; // 🔹 Evita ejecutar la consulta si `usuario.id` no está disponible.
+        //Si no hay usuario, no se hace nada.
+        if (!usuario || !usuario.id) return;
         
         try {
             const { data, error } = await supabase
@@ -29,11 +31,12 @@ const ProveedorLista = ({ children }) => {
             setListas(data);
         } catch (error) {
             setErrorLista(error.message);
-        }
+        };
     };
 
     //Función para insertar una lista en la base de datos.
     const insertLista = async (listName) => {
+        //Si no hay usuario, no se hace nada.
         if (!usuario) return;
         try {
             const { data, error } = await supabase.from("listas").insert({
@@ -45,7 +48,7 @@ const ProveedorLista = ({ children }) => {
             setListas(prev => [...prev, data[0]]);
         } catch (error) {
             setErrorLista(error.message);
-        }
+        };
     };
 
     //Función para eliminar una lista de la base de datos.
@@ -56,7 +59,7 @@ const ProveedorLista = ({ children }) => {
             setListas(prev => prev.filter(lista => lista.list_id !== listId));
         } catch (error) {
             setErrorLista(error.message);
-        }
+        };
     };
 
     //Función para seleccionar los productos de una lista.
@@ -64,13 +67,14 @@ const ProveedorLista = ({ children }) => {
         try {
             const { data, error } = await supabase
                 .from("lista_producto")
-                .select("list_id, product_id, quantity, productos(product_name, weight, price)") // Relacionando productos
+                //Relacionando productos.
+                .select("list_id, product_id, quantity, productos(product_name, weight, price)")
                 .eq("list_id", listId);
             if (error) throw error;
             setProductosLista(data);
         } catch (error) {
             setErrorLista(error.message);
-        }
+        };
     };
 
     //Función para añadir un producto a una lista.
@@ -88,7 +92,7 @@ const ProveedorLista = ({ children }) => {
         } catch (error) {
             setErrorLista(error.message);
             toast.error("Error al agregar el producto a la lista.");
-        }
+        };
     };
 
     //Función para eliminar un producto de una lista.
@@ -107,32 +111,35 @@ const ProveedorLista = ({ children }) => {
         } catch (error) {
             setErrorLista(error.message);
             toast.error("Error al eliminar el producto de la lista.");
-        }
+        };
     };
 
     //Funciones para calcular el peso total y el total en euros de los productos de la lista.
     const calcularPesoTotal = () => {
-        if (!productosLista || productosLista.length === 0) return 0; // 🔹 Evita errores si no hay productos
+        //Evita errores si no hay productos en la lista.
+        if (!productosLista || productosLista.length === 0) return 0;
     
         return productosLista.reduce((total, item) => {
-            if (!item.productos || typeof item.productos.weight !== "number") return total; // 🔹 Evita `undefined`
+            //Evita errores si no hay peso en el producto.
+            if (!item.productos || typeof item.productos.weight !== "number") return total;
             return total + (item.productos.weight * item.quantity);
         }, 0);
     };
     
-
+    //Función para calcular el total en euros de los productos de la lista.
     const calcularTotalEuros = () => {
         return productosLista.reduce((total, item) => total + (item.productos.price * item.quantity), 0).toFixed(2);
     };
 
     useEffect(() => {
+        //Si hay un usuario, se seleccionan las listas.
         if (usuario && usuario.id){
             selectListas();
         };
     }, [usuario]);
 
     return (
-        <listaContexto.Provider value={{ 
+        <listaContexto.Provider value={{
             listas, 
             productosLista, 
             insertLista, 

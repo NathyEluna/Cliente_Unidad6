@@ -164,11 +164,9 @@ const ProveedorSesion = ({ children }) => {
     }, []);
 
     const datosExportar = {
-        //Estados.
         usuario,
         errorUsuario,
         sesionIniciada,
-        //Funciones.
         crearUsuario,
         iniciarSesionPassword,
         cerrarSesion,
